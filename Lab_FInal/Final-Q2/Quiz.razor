@@ -1,0 +1,38 @@
+﻿@page "/quiz"
+@using BlazorApp4.Models
+
+<h2>Quiz</h2>
+
+<QuestionList Questions="quizQuestions" />
+
+@code {
+    private List<Question> quizQuestions = new List<Question>
+    {
+        new Question
+        {
+            QuestionText = "What is the capital of France?",
+            Option1 = "Paris",
+            Option2 = "London",
+            Option3 = "Berlin",
+            Option4 = "Madrid",
+            CorrectAnswer = "Paris",
+            AssignedMarks = 5,
+            TimeLimitSeconds = 30,
+            DifficultyLevel = "Easy",
+            Topic = "Geography"
+        },
+        new Question
+        {
+            QuestionText = "Solve 2x + 3 = 11",
+            Option1 = "x = 4",
+            Option2 = "x = 5",
+            Option3 = "x = 3",
+            Option4 = "x = 2",
+            CorrectAnswer = "x = 4",
+            AssignedMarks = 10,
+            TimeLimitSeconds = 45,
+            DifficultyLevel = "Medium",
+            Topic = "Mathematics"
+        }
+    };
+}

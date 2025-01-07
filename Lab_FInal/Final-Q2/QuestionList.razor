@@ -1,0 +1,12 @@
+﻿@using BlazorApp4.Models
+
+<div class="question-list">
+    @foreach (var question in Questions)
+    {
+        <QuestionCard Question="question" />
+    }
+</div>
+
+@code {
+    [Parameter] public List<Question> Questions { get; set; }
+}

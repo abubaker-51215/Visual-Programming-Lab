@@ -1,0 +1,23 @@
+﻿@using BlazorApp4.Models
+
+<div class="question-card border p-3 mb-3 rounded shadow">
+    <h4>@Question.QuestionText</h4>
+    <p><strong>Difficulty:</strong> @Question.DifficultyLevel</p>
+    <p><strong>Topic:</strong> @Question.Topic</p>
+    <p><strong>Marks:</strong> @Question.AssignedMarks</p>
+    <p><strong>Time Limit:</strong> @Question.TimeLimitSeconds seconds</p>
+
+    <h5>Options:</h5>
+    <ul class="list-group">
+        <li class="list-group-item">@Question.Option1</li>
+        <li class="list-group-item">@Question.Option2</li>
+        <li class="list-group-item">@Question.Option3</li>
+        <li class="list-group-item">@Question.Option4</li>
+    </ul>
+
+    <p><strong>Correct Answer:</strong> @Question.CorrectAnswer</p>
+</div>
+
+@code {
+    [Parameter] public Question Question { get; set; }
+}
