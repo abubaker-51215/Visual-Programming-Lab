@@ -1,0 +1,131 @@
+﻿<Page x:Class="InventoryTracking.PurchaseOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Purchase Order Management" Height="600" Width="800"
+      Background="#F5F5F5">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Header -->
+            <RowDefinition Height="*"/>
+            <!-- Main Content -->
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Background="#4A90E2" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <!-- Title -->
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Refresh Button -->
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Purchase Order Management" 
+                           FontSize="22" 
+                           FontWeight="Bold" 
+                           Foreground="White" 
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <!-- Order Creation -->
+                <ColumnDefinition Width="*"/>
+                <!-- DataGrid -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Order Creation Section -->
+            <StackPanel Grid.Column="0" Margin="0,10,10,0">
+                <TextBlock Text="Create New Purchase Order" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,10"/>
+
+                <!-- Supplier Selection -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Supplier:" Width="100" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="SupplierComboBox" Width="180" Padding="5" Background="White" BorderBrush="#D0D0D0">
+                        <ComboBoxItem Content="Supplier A"/>
+                        <ComboBoxItem Content="Supplier B"/>
+                        <ComboBoxItem Content="Supplier C"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Order Date -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Order Date:" Width="100" VerticalAlignment="Center"/>
+                    <DatePicker x:Name="OrderDatePicker" Width="180"/>
+                </StackPanel>
+
+                <!-- Product Details -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Product:" Width="100" VerticalAlignment="Center"/>
+                    <TextBox x:Name="ProductTextBox" Width="180" Padding="5" Background="White" BorderBrush="#D0D0D0"/>
+                </StackPanel>
+
+                <!-- Quantity -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Quantity:" Width="100" VerticalAlignment="Center"/>
+                    <TextBox x:Name="QuantityTextBox" Width="180" Padding="5" Background="White" BorderBrush="#D0D0D0"/>
+                </StackPanel>
+
+                <!-- Buttons -->
+                <Button Content="Add Order"
+                        Width="100" 
+                        Background="#4A90E2" 
+                        Foreground="White" 
+                        BorderBrush="Black" 
+                        HorizontalAlignment="Left" 
+                        Margin="0,10,0,0"
+                        Click="AddOrderButton_Click"/>
+            </StackPanel>
+
+            <!-- Order Status and Tracking -->
+            <StackPanel Grid.Column="1" Margin="10,10,0,0">
+                <TextBlock Text="Purchase Order List" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,10"/>
+                <DataGrid x:Name="PurchaseOrderDataGrid"
+                          AutoGenerateColumns="False" 
+                          Background="White" 
+                          BorderBrush="#D0D0D0" 
+                          BorderThickness="1" 
+                          AlternatingRowBackground="#F9F9F9" 
+                          RowBackground="White"
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Stretch"
+                          IsReadOnly="True"
+                          SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Order ID" Binding="{Binding OrderID}" Width="*"/>
+                        <DataGridTextColumn Header="Supplier" Binding="{Binding Supplier}" Width="*"/>
+                        <DataGridTextColumn Header="Product" Binding="{Binding Product}" Width="*"/>
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/>
+                        <DataGridTextColumn Header="Order Date" Binding="{Binding OrderDate}" Width="*"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- Action Buttons -->
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Mark as Received" 
+                            Width="150" 
+                            Background="#2A9D8F" 
+                            Foreground="White" 
+                            Margin="5" 
+                            Click="MarkAsReceivedButton_Click"/>
+                    <Button Content="Delete Selected Order" 
+                            Width="150" 
+                            Background="#E63946" 
+                            Foreground="White" 
+                            Margin="5" 
+                            Click="DeleteSelectedOrderButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

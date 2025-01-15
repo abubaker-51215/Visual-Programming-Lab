@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="InventoryApp.Views.IntegrationSettingsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Height="484" Width="600"
+             Background="White">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="Integration Settings" FontSize="30" FontWeight="Bold" Foreground="SteelBlue" Margin="5" />
+
+        <!-- Integration Settings -->
+        <StackPanel Grid.Row="1" Margin="10">
+            <GroupBox Header="API Keys" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Enter API Key for e-commerce system:" Margin="5" />
+                    <TextBox x:Name="ApiKeyTextBox" Width="400" Margin="5" />
+                    <Button Content="Save API Key" Width="150" Margin="5" Click="SaveApiKey_Click" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Sync Status" Margin="5">
+                <StackPanel>
+                    <TextBlock x:Name="LastSyncTextBlock" Text="Last Sync: 12/18/2024, 10:30 AM" Margin="5" />
+                    <Button Content="Sync Now" Width="150" Margin="5" Click="SyncNow_Click" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Integration Logs" Margin="5">
+                <ListView x:Name="IntegrationLogsListView" Width="500" Height="150" Margin="5">
+                    <!-- Placeholder for logs -->
+                    <ListViewItem Content="12/18/2024: Sync successful." />
+                    <ListViewItem Content="12/17/2024: Sync failed due to network error." />
+                </ListView>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

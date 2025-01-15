@@ -1,0 +1,32 @@
+﻿<Window x:Class="InventoryApp.Views.DashboardPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dashboard" Height="617" Width="800">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <StackPanel Background="SteelBlue">
+            <TextBlock Text="Dashboard" FontSize="24" FontWeight="Bold" Foreground="White" Margin="10"/>
+            <Button Content="Go to Products" Click="NavigateToProducts" Margin="10" Width="200" Height="40"/>
+            <Button Content="Go to Suppliers" Click="NavigateToSuppliers" Margin="10" Width="200" Height="40"/>
+            <Button Content="Go to Sales Orders" Click="NavigateToSalesOrders" Margin="10" Width="200" Height="40"/>
+            <Button Content="Go to Purchase Orders" Click="NavigateToPurchaseOrders" Margin="10" Width="200" Height="40"/>
+            <Button Content="Go to Reports" Click="NavigateToReportsAndAnalytics" Margin="10" Width="200" Height="40"/>
+            <Button Content="Go to Customers" Click="NavigateToCustomers" Margin="10" Width="200" Height="40"/>
+            <Button Content="Go to Inventory Tracking" Click="NavigateToInventoryTracking" Margin="10" Width="200" Height="40"/>
+            <Button Content="Go to Settings" Click="NavigateToSettings" Margin="10" Width="200" Height="40"/>
+            <Button Content="Go Back" Click="NavigateToGoBack" Margin="10" Width="200" Height="40"/>
+        </StackPanel>
+
+        <!-- Main Content Area -->
+        <Grid Grid.Column="1" Margin="20,20,20,20" Grid.ColumnSpan="2">
+            <!-- Frame to navigate to other pages -->
+            <Frame x:Name="MyFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="InventoryApp.Views.ReorderAlertsPage"  
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+             xmlns:local="clr-namespace:InventoryApp.Views"  
+             Height="600" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Background="SteelBlue" Height="50" Orientation="Horizontal">
+            <TextBlock Text="Reorder Alerts" FontSize="24" FontWeight="Bold" 
+                       VerticalAlignment="Center" Margin="10" Foreground="White"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Low Stock Alerts -->
+            <GroupBox  Margin="10" Grid.Column="0" Background="White" BorderBrush="Gray" BorderThickness="2">
+                <GroupBox.Header>
+                    <TextBlock Text="Low Stock Alerts" FontSize="14" FontWeight="SemiBold" Foreground="Black" Background="LightSkyBlue" Padding="5"/>
+                </GroupBox.Header>
+                <ListView Name="LowStockListView" Margin="10" SelectionMode="Single">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Product Name" DisplayMemberBinding="{Binding ProductName}" Width="200"/>
+                            <GridViewColumn Header="Current Stock" DisplayMemberBinding="{Binding CurrentStock}" Width="120"/>
+                            <GridViewColumn Header="Minimum Stock Level" DisplayMemberBinding="{Binding MinStockLevel}" Width="120"/>
+                            <GridViewColumn Header="Reorder Quantity" DisplayMemberBinding="{Binding ReorderQuantity}" Width="120"/>
+                            <GridViewColumn Header="Supplier" DisplayMemberBinding="{Binding Supplier}" Width="150"/>
+                            <GridViewColumn Header="Reorder Link" DisplayMemberBinding="{Binding ReorderLink}" Width="150"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </GroupBox>
+
+            <!-- Reorder Suggestions -->
+            <GroupBox Margin="15" Grid.Column="1" Background="White" BorderBrush="Gray" BorderThickness="2">
+                <GroupBox.Header>
+                    <TextBlock Text="Reorder Suggestions" FontSize="14" FontWeight="SemiBold" Foreground="Black" Background="LightSkyBlue" Padding="5"/>
+                </GroupBox.Header>
+                <StackPanel Margin="10">
+                    <TextBlock Text="Reorder Suggestions will be displayed here" HorizontalAlignment="left" VerticalAlignment="Center" Margin="10"/>
+                    <ListView Name="ReorderSuggestionsListView" Margin="10" SelectionMode="Single">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Product Name" DisplayMemberBinding="{Binding ProductName}" Width="200"/>
+                                <GridViewColumn Header="Suggested Reorder Quantity" DisplayMemberBinding="{Binding SuggestedQuantity}" Width="180"/>
+                                <GridViewColumn Header="Supplier" DisplayMemberBinding="{Binding Supplier}" Width="150"/>
+                                <GridViewColumn Header="Order Link" DisplayMemberBinding="{Binding OrderLink}" Width="150"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Buttons for Refresh and Reorder -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10">
+                <Button Name="RefreshButton" Content="Refresh" Width="100" Height="40" Margin="5" Background="SteelBlue" Foreground="White" Click="RefreshButton_Click"/>
+                <Button Name="ReorderButton" Content="Reorder" Width="100" Height="40" Margin="5" Background="SteelBlue" Foreground="White" Click="ReorderButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

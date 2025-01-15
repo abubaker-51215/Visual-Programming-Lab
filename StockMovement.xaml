@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="InventoryApp.Views.StockMovementPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="600" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Background="SteelBlue" Height="50" Orientation="Horizontal">
+            <TextBlock Text="Stock Movement" FontSize="24" FontWeight="Bold"
+                       VerticalAlignment="Center" Margin="10" Foreground="White"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Stock Movement Form -->
+            <GroupBox  Margin="5,0,5,5" Grid.Column="0" Background="White" BorderBrush="Gray" BorderThickness="0">
+                <GroupBox.Header>
+                    <TextBlock Text="Record Stock Movement" FontSize="14" FontWeight="SemiBold" Foreground="Black" Background="LightSkyBlue" Padding="5"/>
+                </GroupBox.Header>
+                <StackPanel Margin="10">
+                    <!-- Title: Clear labeling -->
+                    <TextBlock Text="Please fill in the details below : " FontSize="14" FontStyle="Italic" Margin="0,0,0,10" Foreground="Gray"/>
+
+                    <!-- Product Selection -->
+                    <TextBlock Text="Product" Foreground="Black" FontWeight="Bold"/>
+                    <ComboBox Name="ProductComboBox" Margin="5" Width="250">
+                        <ComboBoxItem>Product A</ComboBoxItem>
+                        <ComboBoxItem>Product B</ComboBoxItem>
+                        <ComboBoxItem>Product C</ComboBoxItem>
+                    </ComboBox>
+
+                    <!-- Movement Type Selection -->
+                    <TextBlock Text="Movement Type" Foreground="Black" FontWeight="Bold"/>
+                    <ComboBox Name="MovementTypeComboBox" Margin="5" Width="250">
+                        <ComboBoxItem>IN</ComboBoxItem>
+                        <ComboBoxItem>OUT</ComboBoxItem>
+                        <ComboBoxItem>ADJUSTMENT</ComboBoxItem>
+                    </ComboBox>
+
+                    <!-- Quantity -->
+                    <TextBlock Text="Quantity" Foreground="Black" FontWeight="Bold"/>
+                    <TextBox Name="QuantityTextBox" Margin="5"/>
+
+                    <!-- Reason -->
+                    <TextBlock Text="Reason (Optional)" Foreground="Black" FontWeight="Bold"/>
+                    <TextBox Name="ReasonTextBox" Margin="5"/>
+
+                    <!-- Submit Button -->
+                    <Button Content="Submit Movement" Margin="10" Width="200" HorizontalAlignment="Center" Click="SubmitMovement_Click"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Stock Movement History -->
+            <GroupBox  Margin="5" Grid.Column="1" Background="White" BorderBrush="Gray" BorderThickness="0">
+                <GroupBox.Header>
+                    <TextBlock Text="Movement History" FontSize="14" FontWeight="SemiBold" Foreground="Black" Background="LightSkyBlue" Padding="5"/>
+                </GroupBox.Header>
+                <Grid Height="464">
+                    <Grid>
+                        <StackPanel Orientation="Vertical">
+                            <Grid>
+                                <ScrollViewer>
+                                    <StackPanel Height="464" Width="551">
+                                        <TextBlock Text="Recent stock movements will appear here." VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                                        <!-- Placeholder for future movement history -->
+                                        <ListView x:Name="MovementHistoryListView" Margin="10">
+                                            <ListView.View>
+                                                <GridView>
+                                                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" Width="120"/>
+                                                    <GridViewColumn Header="Product" DisplayMemberBinding="{Binding ProductName}" Width="150"/>
+                                                    <GridViewColumn Header="Movement Type" DisplayMemberBinding="{Binding MovementType}" Width="100"/>
+                                                    <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}" Width="100"/>
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</UserControl>
